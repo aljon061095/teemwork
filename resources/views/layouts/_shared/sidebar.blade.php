@@ -20,7 +20,7 @@
                 </button>
                 <ul id="dropdown-example" class="hidden py-2 space-y-2 ml-4">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('jobs')}}"
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">

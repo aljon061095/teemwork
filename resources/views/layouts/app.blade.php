@@ -29,7 +29,7 @@
                 @include('layouts._shared.sidebar')
            
             <div class="p-6 mt-4 sm:ml-64">
-                <main class="py-4">
+                <main class="py-4 bg-white">
                     @yield('content')
                 </main>
             </div>

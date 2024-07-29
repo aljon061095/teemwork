@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
@@ -20,6 +21,10 @@ Route::get('/', function () {
 });
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
+
+//Jobs
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
+Route::get('/jobs/create', [JobController::class, 'create'])->name('create-job');
 
 //User Management
 Route::get('/users', [UserController::class, 'index'])->name('users');
