@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('employees', [EmployeeController::class, 'index'])->name('employees');
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
+
+//User Management
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users/create', [UserController::class, 'create'])->name('create-user');
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit-user');
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

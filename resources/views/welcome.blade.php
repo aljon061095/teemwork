@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ URL::asset('/favicon.ico') }}" type="image/x-icon" />
 
-    <title>{{ config('app.name', 'Teemworl') }}</title>
+    <title>{{ config('app.name', 'Teemwork') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">

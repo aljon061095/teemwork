@@ -34,19 +34,17 @@
             <main class="py-4">
                 <div class="container-fluid mt-5">
                     <div class="flex items-center justify-between rtl:justify-end">
-                        <h1 class="text-3xl mb-4">Employees</h1>
-                        <button type="button" class="text-white bg-tm-primary hover:bg-tm-secondary focus:ring-4
+                        <h1 class="text-3xl mb-4">User Management</h1>
+                        <a href="{{ route('create-user')}}" type="button" class="text-white bg-tm-primary hover:bg-tm-secondary focus:ring-4
                          focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 me-2 mb-2">
-                            Add new employee
-                        </button>
+                            <i class="fas fa-plus"></i>
+                            Add new user
+                        </a>
                     </div>
-                    <table class="table mt-4" id="employees-table">
+                    <table class="table mt-4" id="users-table">
                         <thead>
                             <th> # </th>
                             <th> Name </th>
-                            <th> Gender </th>
-                            <th> Phone </th>
-                            <th> Address </th>
                             <th> Action </th>
                         </thead>
                         <tbody>
@@ -69,19 +67,13 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
 
-    @section('page-script')
-        @vite([
-            'resources/js/employees/employee.js'
-        ])
-    @endsection
-
     <script type="text/javascript">
         $(document).ready(function () {
             var userView = '';
-            var table = $('#employees-table').DataTable({
+            var table = $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('employees') }}",
+                ajax: "{{ route('users') }}",
                 columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
@@ -89,18 +81,6 @@
                 {
                     data: 'name',
                     name: 'name'
-                },
-                {
-                    data: 'gender',
-                    name: 'gender'
-                },
-                {
-                    data: 'phone_number',
-                    name: 'phone_number'
-                },
-                {
-                    data: 'address',
-                    name: 'address'
                 },
                 {
                     data: 'action',
@@ -159,7 +139,7 @@
                     orderable: false,
                     render: function (data, type, full, meta) {
                         return ('<div class="flex space-x-2 mt-2">' +
-                            '<button type="button" class="text-white bg-tm-primary hover:bg-tm-secondary focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fas fa-pencil me-1"></i>Edit</button>' +
+                            '<a href="/users/' + full['id']  +'/edit"  class="text-white bg-tm-primary hover:bg-tm-secondary focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fas fa-pencil me-1"></i>Edit</a>' +
                             '<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><i class="fas fa-trash me-1"></i>Delete</button></div>');
                     }
                 }
