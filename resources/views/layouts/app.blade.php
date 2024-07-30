@@ -21,7 +21,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
-<body>
+<body class="bg-white">
     <div id="app">
         @if (Auth::check())
         <div class="min-h-full">

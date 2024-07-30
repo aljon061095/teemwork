@@ -1,10 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
-@section('content')
+@section('title', 'Create Job')
+
+@section('page')
 <div class="container mt-5">
-    <h1 class="text-3xl mb-2">Create a new job posting</h1>
-    <hr class="h-px my-4 bg-tm-primary">
-    <div class="row mt-2">
+    <header class="mb-2">
+        <h1 class="text-3xl">Create job posting</h1>
+        <hr class="h-px my-2 border-b border-solid border-tm-primary border-opacity-100" />
+    </header>
+    <div class="row mt-4">
         <form>
             <div class="mb-6">
                 <div class="row mb-4">
@@ -25,7 +29,7 @@
                             placeholder="Teemwork" required />
                     </div>
                 </div>
-                
+
                 <div class="row mb-4">
                     <div class="col-12">
                         <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -199,7 +203,7 @@
                         </select>
                     </div>
                 </div>
-               
+
                 <div class="row mb-4">
                     <div class="col-6">
                         <label for="departments"
@@ -230,7 +234,7 @@
                         </select>
                     </div>
                 </div>
-               
+
 
                 <div class="row mb-4">
                     <div class="col-4">
@@ -244,7 +248,7 @@
                     <div class="col-4">
                         <label for="number-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salary Range</label>
-                        
+
                         <div class="">
                             <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                             focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
@@ -255,7 +259,7 @@
                     <div class="col-4">
                         <label for="number-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salary Range</label>
-                        
+
                         <div class="">
                             <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                             focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
@@ -280,8 +284,10 @@
                                 </svg>
                             </div>
                             <input datepicker id="default-datepicker" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select date">
+                                class="bg-gray-50 border border-gray-300 text-gray-900 
+                                text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+                                block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600
+                                dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
                         </div>
                     </div>
 
@@ -298,28 +304,217 @@
                                         d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                 </svg>
                             </div>
-                            <input datepicker id="default-datepicker" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select date">
+                            <input datepicker id="default-datepicker" type="text" class="bg-gray-50 border border-gray-300
+                                text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                                focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700
+                                dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                                dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
                         </div>
                     </div>
-                </div>            
-            </div>
+                </div>
+                <div class="row p-3 mb-4 card bg-inherit">
+                    <h3 class="block text-lg mb-2 me-4 text-gray-900 dark:text-white">
+                        Pre-screening Questions
+                    </h3>
+                    <div class="mt-2 flex">
+                        <div class="flex items-center w-full max-w-md mb-3">
+                            <div class="relative w-full mr-3">
+                                <select id="question-field" class="bg-gray-50 border
+                                border-gray-300 text-gray-900 text-sm rounded-lg
+                                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected value="yesOrNo">Yes or No</option>
+                                    <option value="number">Number</option>
+                                    <option value="customAnswer">Custom Answer</option>
+                                </select>
+                            </div>
+                            <button type="button" name="add" id="addQuestionBtn" class="text-white bg-gray-700 hover:bg-gray-500 
+                                font-medium rounded-lg text-sm w-full sm:w-auto px-5 me-2 py-2.5 text-center">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    <div id="questionContainer" class="row">
+                        
 
-            <div class="mt-2">
-                <a href="{{ route('jobs') }}" class="text-white bg-gray-700 hover:bg-tm-secondary focus:ring-4 focus:outline-none
+                        <!-- <div class="grid grid-cols-2 gap-4 card p-4 mb-2 shadow">
+                            <div>
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Question 1</label>
+                                <textarea id="message" rows="4" class="block p-2.5
+                                    w-full text-sm text-gray-900 bg-gray-50 rounded-lg border"
+                                        placeholder="Write your question here..."></textarea>
+                            </div>
+                            <div>
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Answer</label>
+                                <input type="number" id="number-input" aria-describedby="helper-text-explanation"
+                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                placeholder="Enter your answer here" required />
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 card p-4 mb-2 shadow">
+                            <div class="mb-3">
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Question 1</label>
+                                <textarea id="message" rows="4" class="block p-2.5
+                                    w-full text-sm text-gray-900 bg-gray-50 rounded-lg border"
+                                        placeholder="Write your question here..."></textarea>
+                            </div>
+                            <div class="">
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Answer</label>
+                                <textarea id="message" rows="4" class="block p-2.5
+                                    w-full text-sm text-gray-900 bg-gray-50 rounded-lg border"
+                                        placeholder="Write your question here..."></textarea>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <div class="row p-3 card bg-inherit">
+                    <h3 class="block text-lg mb-2 me-4 text-gray-900 dark:text-white">
+                        Add Custom Field
+                    </h3>
+                    <div class="mt-2 flex">
+                        <div class="flex items-center w-full max-w-md mb-3">
+                            <div class="relative w-full mr-3">
+                                <select id="custom-field" class="bg-gray-50 border
+                                border-gray-300 text-gray-900 text-sm rounded-lg
+                                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected value="text">Text</option>
+                                    <option value="number">Number</option>
+                                    <option value="date">Date</option>
+                                    <option value="money">Money</option>
+                                    <option value="file">Attachment</option>
+                                </select>
+                            </div>
+                            <button type="button" name="add" id="addCustomFieldBtn" class="text-white bg-gray-700 hover:bg-gray-500 
+                                font-medium rounded-lg text-sm w-full sm:w-auto px-5 me-2 py-2.5 text-center">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table border-none" id="customFieldContainer">
+                        <tr></tr>
+                    </table>
+                </div>
+            </div>
+    </div>
+
+    <div class="mt-2 flex justify-end">
+        <a href="{{ route('jobs') }}" class="text-white bg-gray-700 hover:bg-tm-secondary focus:ring-4 focus:outline-none
                     focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 me-2 
                     py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Cancel
-                </a>
-                <button type="submit" class="text-white bg-tm-primary hover:bg-tm-secondary focus:ring-4 focus:outline-none
+            Cancel
+        </a>
+        <button type="submit" class="text-white bg-tm-primary hover:bg-tm-secondary focus:ring-4 focus:outline-none
                     focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 
                     py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Save
-                </button>
-            </div>
-
-        </form>
+            Save
+        </button>
     </div>
+
+    </form>
+</div>
 </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        var i = 0;
+
+        $("#addCustomFieldBtn").click(function () {
+            ++i;
+            var custom_field = $('#custom-field').val();
+
+            var input = '<tr><td><input type="text" name="moreFields['
+                + i + '][title]" placeholder="Enter field label" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><input type="text" name="moreFields['
+                + i + '][title]" placeholder="Enter field value" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>';
+
+            switch (custom_field) {
+                case 'number':
+                    input = '<tr><td><input type="text" name="moreFields['
+                    + i + '][title]" placeholder="Enter field label" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><input type="number" name="moreFields['
+                    + i + '][title]" placeholder="Enter field value" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>';
+                    break;
+
+                case 'money':
+                    input = '<tr><td><input type="text" name="moreFields['
+                    + i + '][title]" placeholder="Enter field label" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><input type="number" name="moreFields['
+                    + i + '][title]" placeholder="Enter field value" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>';
+                    break;
+
+                case 'date':
+                    input = '<tr><td><input type="text" name="moreFields['
+                    + i + '][title]" placeholder="Enter field label" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><input datepicker id="default-datepicker" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" placeholder="Select date"></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>';
+                    break;
+
+                case 'file':
+                    input = '<tr><td><input type="text" name="moreFields['
+                    + i + '][title]" placeholder="Enter field label" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><input type="file" name="moreFields['
+                    + i + '][title]" placeholder="Enter field value" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>';
+                    break;
+
+                default:
+                    input = input;
+            }
+
+            $("#customFieldContainer").append(input);
+            //$('#custom-field').val('')
+        });
+
+        $(document).on('click', '.remove-tr', function () {
+            $(this).parents('tr').remove();
+        });  
+    </script>
+    <script type="text/javascript">
+        var i = 0;
+
+        $("#addQuestionBtn").click(function () {
+            i = $('.question-section').length + 1;
+            var question_field = $('#question-field').val();
+
+            var input = '<div class="question-section card shadow p-4 mb-2"><div class="flex justify-end"><a class="removeQtn" href="javascript:void(0);"><i  class="fas fa-xmark fa-lg"></i></a></div><div class="grid grid-cols-2 gap-4"><div><label for="message" class="block mb-2 text-sm font-medium text-gray-900">Question ' + '<span class="question-number">' + i + '</span>' + '</label><textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border" placeholder="Write your question here..."></textarea></div><div><label for="message" class="block mb-2 text-sm font-medium text-gray-900">Answer</label><div class="flex items-center ps-4 border border-gray-200 rounded"><input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"><label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900">Yes</label></div><div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700"><input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"><label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">No</label></div></div></div></div>';
+            switch (question_field) {
+                case 'number':
+                    input = '<div class="question-section card shadow p-4 mb-2"><div class="flex justify-end"><a class="removeQtn" href="javascript:void(0);"><i class="fas fa-xmark fa-lg"></i></a></div><div class="grid grid-cols-2 gap-4"><div><label for="message" class="block mb-2 text-sm font-medium text-gray-900">Question ' + '<span class="question-number">' + i + '</span>' +  '</label><textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border" placeholder="Write your question here..."></textarea></div><div><label for="message" class="block mb-2 text-sm font-medium text-gray-900">Answer</label><input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Enter your answer here" required /></div></div></div>';
+                    break;
+
+                case 'customAnswer':
+                    input = '<div class="question-section card shadow p-4 mb-2"><div class="flex justify-end"><a class="removeQtn" href="javascript:void(0);"><i class="fas fa-xmark fa-lg"></i></a></div><div class="grid grid-cols-2 gap-4"><div><label for="message" class="block mb-2 text-sm font-medium text-gray-900">Question ' + '<span class="question-number">' + i + '</span>' +  '</label><textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border" placeholder="Write your question here..."></textarea></div><div><label for="message" class="block mb-2 text-sm font-medium text-gray-900">Answer</label><input type="text" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Enter your answer here" required /></div></div></div>';
+                    break;
+
+                default:
+                    input = input;
+            }
+
+            $("#questionContainer").append(input);
+            i++;
+            return false;
+        });
+
+        $(document).on('click', '.removeQtn', function () {
+            if (i > 0) {
+                var $target = $(this).parents('.question-section');
+                $target.hide('slow', function() {
+                    $target.remove();
+                });
+                resetIndexes($('.question-section').length - 1);
+            }
+            return false;
+        });  
+
+        function resetIndexes(indx) {
+            var j = 1;
+            $('.question-section').each(function() {
+                if (j > 1) {
+                    $(this).find('.question-number').text(j);
+                }
+                j++;
+            });
+            console.log(j);
+        }
+    </script>
+@endpush
