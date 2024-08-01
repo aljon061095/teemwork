@@ -25,6 +25,11 @@ Route::get('/employees', [EmployeeController::class, 'index'])->name('employees'
 //Jobs
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
 Route::get('/jobs/create', [JobController::class, 'create'])->name('create-job');
+Route::get('/get-departments', [JobController::class, 'getDepartments'])->name('get-departments');
+Route::get('/get-hiring-managers', [JobController::class, 'getHiringManagers'])->name('get-hiring-managers');
+Route::get('/get-locations', [JobController::class, 'getLocations'])->name('get-locations');
+Route::get('/get-employment-types', [JobController::class, 'getEmploymentTypes'])->name('get-employment-types');
+Route::get('/department-exist', [JobController::class, 'departmentExist'])->name('department-exist');
 
 //User Management
 Route::get('/users', [UserController::class, 'index'])->name('users');
