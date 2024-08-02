@@ -4,6 +4,7 @@ use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::get('/get-departments', [JobController::class, 'getDepartments'])->name('
 Route::get('/get-hiring-managers', [JobController::class, 'getHiringManagers'])->name('get-hiring-managers');
 Route::get('/get-locations', [JobController::class, 'getLocations'])->name('get-locations');
 Route::get('/get-employment-types', [JobController::class, 'getEmploymentTypes'])->name('get-employment-types');
+Route::get('/get-workplace-types', [JobController::class, 'getWorkplaceTypes'])->name('get-workplace-types');
+Route::get('/get-job-pipeline-stages', [JobController::class, 'getJobPipelineStages'])->name('get-job-pipeline-stages');
+Route::get('/get-privacy-settings', [JobController::class, 'getPrivacySettings'])->name('get-privacy-settings');
 Route::get('/department-exist', [JobController::class, 'departmentExist'])->name('department-exist');
 
 //User Management

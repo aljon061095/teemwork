@@ -13,7 +13,6 @@ class Job extends Model
         'title',
         'company',
         'description',
-        'pre_questionnaires',
         'department',
         'hiring_manager',
         'location',
@@ -21,9 +20,11 @@ class Job extends Model
         'head_count',
         'salary_range',
         'posting_date',
-        'salary_range',
         'application_deadline',
+        'workplace_type',
         'job_pipeline_stages',
-        'user_roles'
+        'privacy_settings',
+        'screening_questions',
+        'custom_fields'
     ];
 }

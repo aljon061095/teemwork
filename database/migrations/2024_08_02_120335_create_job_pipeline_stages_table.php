@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -12,27 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('job_pipeline_stages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
-
-        //Insert some department data
-        DB::table('departments')->insert(
-            array(
-                [
-                    'name' => 'Administrator',
-                ],
-                [
-                    'name' => 'Recruitment',
-                ],
-                [
-                    'name' => 'Finance',
-                ],
-            )
-        );
     }
 
     /**
@@ -40,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('job_pipeline_stages');
     }
 };

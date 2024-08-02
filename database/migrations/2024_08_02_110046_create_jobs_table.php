@@ -14,19 +14,21 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('company')->nullable();
+            $table->string('company');
             $table->string('description')->nullable();
-            $table->string('pre_questionnaires')->nullable();
-            $table->string('department');
+            $table->string('department')->nullable();
             $table->string('hiring_manager')->nullable();
-            $table->string('location')->nullable();
+            $table->string('location');
             $table->string('employment_type')->nullable();
             $table->integer('head_count')->nullable();
             $table->integer('salary_range')->nullable();
             $table->timestamp('posting_date')->useCurrent();
             $table->timestamp('application_deadline')->useCurrent();
-            $table->string('job_pipeline_stages');
-            $table->string('user_roles');
+            $table->string('workplace_type')->nullable();
+            $table->string('job_pipeline_stages')->nullable();
+            $table->string('privacy_settings')->nullable();
+            $table->json('screening_questions')->nullable();
+            $table->json('custom_fields')->nullable();
             $table->timestamps();
         });
     }

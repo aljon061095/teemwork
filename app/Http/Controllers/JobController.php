@@ -6,8 +6,12 @@ use App\Models\EmploymentType;
 use App\Models\HiringManager;
 use App\Models\Job;
 use App\Models\Department;
+use App\Models\JobPipelineStage;
 use App\Models\Location;
+use App\Models\PrivacySetting;
+use App\Models\WorkplaceType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Yajra\DataTables\DataTables;
 
 class JobController extends Controller
@@ -83,6 +87,45 @@ class JobController extends Controller
                         ->get();
         }
         return response()->json($employment_types);
+    }
+
+    public function getWorkplaceTypes(Request $request) 
+    {
+        $workplace_types = [];
+        if ($request->ajax()) {
+            $search = $request->q;
+            $workplace_types = WorkplaceType::select('id', 'name')
+                        ->where('name','LIKE','%'. $search .'%')
+                        ->orderBy('name','asc')
+                        ->get();
+        }
+        return response()->json($workplace_types);
+    }
+
+    public function getJobPipelineStages(Request $request) 
+    {
+        $job_pipeline_stages = [];
+        if ($request->ajax()) {
+            $search = $request->q;
+            $job_pipeline_stages = JobPipelineStage::select('id', 'name')
+                        ->where('name','LIKE','%'. $search .'%')
+                        ->orderBy('name','asc')
+                        ->get();
+        }
+        return response()->json($job_pipeline_stages);
+    }
+
+    public function getPrivacySettings(Request $request) 
+    {
+        $privacy_settings = [];
+        if ($request->ajax()) {
+            $search = $request->q;
+            $privacy_settings = PrivacySetting::select('id', 'name')
+                        ->where('name','LIKE','%'. $search .'%')
+                        ->orderBy('name','asc')
+                        ->get();
+        }
+        return response()->json($privacy_settings);
     }
 
     public function departmentExist(Request $request) {
