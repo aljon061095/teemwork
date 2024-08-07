@@ -31,12 +31,16 @@
                     <div class="z-50 my-2 hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
-                            <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                {{ Auth::user()->name }}
-                            </p>
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                                {{ Auth::user()->email }}
-                            </p>
+                            <div class="flex justify-between">
+                                <div>
+                                    <img class="w-8 h-8 rounded-full"
+                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                                </div>
+                                <div class="mx-3">
+                                    <span class="block text-sm font-semibold text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
+                                    <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{ Auth::user()->email }}</span>
+                                </div>
+                            </div>
                         </div>
                         <ul class="py-1" role="none">
                             <li>

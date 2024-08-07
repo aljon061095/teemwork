@@ -6,6 +6,10 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\HiringManagerController;
+use App\Http\Controllers\Admin\EmploymentTypeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +43,11 @@ Route::get('/department-exist', [JobController::class, 'departmentExist'])->name
 Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/users/create', [UserController::class, 'create'])->name('create-user');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit-user');
+
+//Admin
+Route::get('/admin/departments', [DepartmentController::class, 'index'])->name('admin.departments');
+Route::get('/admin/hiring_managers', [HiringManagerController::class, 'index'])->name('admin.hiring_managers');
+Route::get('/admin/employment_types', [EmploymentTypeController::class, 'index'])->name('admin.employment_types');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
