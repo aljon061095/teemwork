@@ -37,6 +37,11 @@ class JobController extends Controller
         return view('jobs.jobs-add');
     }
 
+    public function details(Request $request)
+    {
+        return view('jobs.job-details');
+    }
+
     public function getDepartments(Request $request) 
     {
         $departments = [];

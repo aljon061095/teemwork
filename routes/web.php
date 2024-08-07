@@ -38,6 +38,7 @@ Route::get('/get-workplace-types', [JobController::class, 'getWorkplaceTypes'])-
 Route::get('/get-job-pipeline-stages', [JobController::class, 'getJobPipelineStages'])->name('get-job-pipeline-stages');
 Route::get('/get-privacy-settings', [JobController::class, 'getPrivacySettings'])->name('get-privacy-settings');
 Route::get('/department-exist', [JobController::class, 'departmentExist'])->name('department-exist');
+Route::get('/jobs/{id}/details', [JobController::class, 'details'])->name('job-details');
 
 //User Management
 Route::get('/users', [UserController::class, 'index'])->name('users');
@@ -47,7 +48,10 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit-user
 //Admin
 Route::get('/admin/departments', [DepartmentController::class, 'index'])->name('admin.departments');
 Route::get('/admin/hiring_managers', [HiringManagerController::class, 'index'])->name('admin.hiring_managers');
+
+
 Route::get('/admin/employment_types', [EmploymentTypeController::class, 'index'])->name('admin.employment_types');
+Route::delete('/employment_type/{id}/delete', [EmploymentTypeController::class, 'delete'])->name('employment_type.delete');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

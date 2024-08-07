@@ -2,10 +2,12 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-3xl mb-4">Edit user</h1>
+    <header class="mb-2">
+        <h1 class="text-3xl">Edit user</h1>
+        <hr class="h-px my-2 border-b border-solid border-tm-primary border-opacity-100" />
+    </header>   
 
-    <div class="row">
-
+    <div class="row mt-4">
         <form>
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
@@ -20,8 +22,9 @@
                         placeholder="John Doe" required />
                 </div>
                 <div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
-                        address</label>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Email address
+                    </label>
                     <input type="email" id="email"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm
                          rounded-lg focus:ring-tm-primary focus:border-tm-primary block 
@@ -40,12 +43,13 @@
                           block w-full p-2.5 dark:bg-gray-700
                            dark:border-gray-600 dark:placeholder-gray-400
                             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         value="{{ $user->name }}"
+                         value="{{ $user->company }}"
                         placeholder="Flowbite" required />
                 </div>
                 <div>
-                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
-                        number</label>
+                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Phone number
+                    </label>
                     <input type="tel" id="phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm
                          rounded-lg focus:ring-tm-primary focus:border-tm-primary

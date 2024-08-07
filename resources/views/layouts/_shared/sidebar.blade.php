@@ -12,14 +12,16 @@
             </li>
             <li>
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-600 transition duration-75 rounded-lg group hover:bg-tm-secondary hover:text-white group"
-                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                    class="flex items-center w-full p-2 text-base
+                    text-gray-600 transition duration-75 rounded-lg group
+                    hover:bg-tm-secondary hover:text-white group"
+                    aria-controls="dropdown-example" data-collapse-toggle="recruitment">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Recruitment</span>
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
-                <ul id="dropdown-example" class="hidden py-2 space-y-2 ml-4">
-                    <li>
+                <ul id="recruitment" class="{{ request()->is(['jobs*']) ? '' : 'hidden' }} py-2 space-y-2 ml-4">
+                    <li class="{{ request()->is(['jobs*']) ? 'active' : '' }}">
                         <a href="{{ route('jobs')}}"
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
@@ -227,7 +229,9 @@
             @if (Auth::user()->role === 'admin') 
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-600 transition duration-75 rounded-lg group hover:bg-tm-secondary hover:text-white group"
+                        class="flex items-center w-full p-2 text-base
+                        text-gray-600 transition duration-75 rounded-lg group
+                        hover:bg-tm-secondary hover:text-white group"
                         aria-controls="dropdown-example" data-collapse-toggle="management">
                         <i class="fa-solid fa-user-gear fa-lg"></i>
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Management</span>

@@ -32,7 +32,7 @@
             var table = $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('hiring_managers') }}",
+                ajax: "{{ route('admin.hiring_managers') }}",
                 columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'

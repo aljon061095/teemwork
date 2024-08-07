@@ -31,4 +31,13 @@ class EmploymentTypeController extends Controller
         $user = User::find($id);
         return view('users.users-edit', compact('user'));
     }
+
+    public function delete($id) {
+        $employmentType = EmploymentType::find($id);
+        if (!empty($employmentType)) { 
+            $employmentType->delete();
+            return response()->json(true);
+        }
+        return response()->json(false);
+    }
 }
