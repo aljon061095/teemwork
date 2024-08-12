@@ -7,8 +7,9 @@
 <div class="container-fluid mt-5">
     <div class="lg:flex lg:items-center lg:justify-between">
         <div class="min-w-0 flex-1">
-            <h2 class="text-3xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                Back End Developer
+            <h2 class="text-3xl font-bold leading-7
+                sm:truncate sm:text-3xl sm:tracking-tight">
+               {{ $job->title }}
             </h2>
             <div class="mt-2 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
                 <div class="mt-2 me-3 flex items-center text-sm text-gray-500">
@@ -31,11 +32,12 @@
         </div>
         <div class="mt-2 flex lg:ml-4 lg:mt-0">
             <span class="sm:block">
-                <button type="button" class="inline-flex items-center rounded-md text-white bg-tm-primary px-3 py-2 text-sm font-semibold
-                     shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-tm-secondary">
+                <a href="{{ route('edit-job', ['id' => $job->id]) }}" class="inline-flex items-center rounded-md text-white
+                    bg-tm-primary px-3 py-2 text-sm font-semibold
+                    shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-tm-secondary">
                     <i class="fas fa-pencil me-1"></i>
                     Edit
-                </button>
+                </a>
             </span>
         </div>
     </div>
@@ -43,13 +45,13 @@
     <div class="row mt-4">
         <div class="border-t border-gray-100">
             <div class="divide-gray-100 grid grid-cols-2">
-                <div class="px-2 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
+                <div class="px-2 py-4 sm:grid sm:grid-cols-2 sm:px-0">
                     <div class="text-base font-medium leading-6 text-gray-900">Company</div>
-                    <div class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Teemwork</div>
+                    <div class="mt-1 text-sm leading-6 text-gray-600 sm:col-span-2 sm:mt-0">{{ $job->company }}</div>
                 </div>
-                <div class="px-2 py-6 sm:grid sm:grid-cols- sm:gap-4 sm:px-0">
+                <div class="px-2 py-4 sm:grid sm:grid-cols-2 sm:px-0">
                     <dt class="text-base font-medium leading-6 text-gray-900">Hiring Manager</dt>
-                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Jon Doe</dd>
+                    <dd class="mt-1 text-sm leading-6 text-gray-600 sm:col-span-2 sm:mt-0">{{ $job->hiring_manager ? $job->hiring_manager : 'No hiring manager indicated' }}</dd>
                 </div>
 
             </div>
@@ -57,12 +59,8 @@
 
         <div class="px-4 py-6 sm:px-0">
             <h3 class="text-xl font-semibold leading-7 text-gray-900">About the Job</h3>
-            <p class="mt-1 text-sm leading-6 text-gray-500">Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <p class="mt-1 text-sm leading-6 text-gray-500">
+                {{ $job->description }}
             </p>
         </div>
 

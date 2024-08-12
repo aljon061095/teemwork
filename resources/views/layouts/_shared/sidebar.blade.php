@@ -31,15 +31,15 @@
                         </a>
                     </li>
                     <li>
-                    <a href="#"
+                        <a href="#"
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-user-group fa-lg"></i>
-                             <span class="ms-3">Candidates</span>
+                            <i class="fa-solid fa-user-group fa-lg"></i>
+                            <span class="ms-3">Candidates</span>
                         </a>
                     </li>
-                   
+
                 </ul>
             </li>
             <li>
@@ -61,15 +61,15 @@
                         </a>
                     </li>
                     <li>
-                    <a href="#"
+                        <a href="#"
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-file fa-lg"></i>
-                             <span class="ms-3">Files</span>
+                            <i class="fa-solid fa-file fa-lg"></i>
+                            <span class="ms-3">Files</span>
                         </a>
                     </li>
-                   
+
                 </ul>
             </li>
             <li>
@@ -93,7 +93,7 @@
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-money-bill-trend-up fa-lg"></i>
+                            <i class="fa-solid fa-money-bill-trend-up fa-lg"></i>
                             <span class="ms-3">Salary</span>
                         </a>
                     </li>
@@ -102,7 +102,7 @@
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-chart-simple fa-lg"></i>
+                            <i class="fa-solid fa-chart-simple fa-lg"></i>
                             <span class="ms-3">Benefits</span>
                         </a>
                     </li>
@@ -111,7 +111,7 @@
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-money-bill fa-lg"></i>
+                            <i class="fa-solid fa-money-bill fa-lg"></i>
                             <span class="ms-3">Compensation</span>
                         </a>
                     </li>
@@ -131,7 +131,7 @@
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-up-long fa-lg"></i>
+                            <i class="fa-solid fa-up-long fa-lg"></i>
                             <span class="ms-3">Appraisal</span>
                         </a>
                     </li>
@@ -165,7 +165,7 @@
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-up-long fa-lg"></i>
+                            <i class="fa-solid fa-up-long fa-lg"></i>
                             <span class="ms-3">Workforce Plan</span>
                         </a>
                     </li>
@@ -174,7 +174,7 @@
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-up-long fa-lg"></i>
+                            <i class="fa-solid fa-up-long fa-lg"></i>
                             <span class="ms-3">Succession Plan</span>
                         </a>
                     </li>
@@ -194,6 +194,8 @@
                     <span class="ms-3">Support</span>
                 </a>
             </li>
+            <!--For Admin Management-->
+            @if (Auth::user()->role === 'admin')
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-600 transition duration-75 rounded-lg group hover:bg-tm-secondary hover:text-white group"
@@ -202,14 +204,14 @@
                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Settings</span>
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
-                <ul id="settings" class="hidden py-2 space-y-2 ml-4">
+                <ul id="settings" class="{{ request()->routeIs('admin.*') ? '' : 'hidden' }} py-2 space-y-2 ml-4">
                     <li>
                         <a href="{{ route('users') }}"
                             :active="request()->routeIs('users')"
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-user-gear fa-lg"></i>
+                            <i class="fa-solid fa-user-gear fa-lg"></i>
                             <span class="ms-3">User Management</span>
                         </a>
                     </li>
@@ -218,57 +220,54 @@
                             class="flex items-center w-full p-2 text-gray-600 transition duration-75
                              rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
                              dark:text-white dark:hover:bg-gray-700">
-                             <i class="fa-solid fa-desktop fa-lg"></i>
+                            <i class="fa-solid fa-desktop fa-lg"></i>
                             <span class="ms-3">Integrations</span>
                         </a>
                     </li>
+                    <li>
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base
+                    text-gray-600 transition duration-75 rounded-lg group
+                    hover:bg-tm-secondary hover:text-white group"
+                            aria-controls="dropdown-example" data-collapse-toggle="management">
+                            <i class="fa-solid fa-gears fa-lg"></i>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">System Settings</span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul id="management" class="{{ request()->routeIs('admin.*') ? '' : 'hidden' }} py-2 space-y-2 ml-4">
+                            <li class="{{ request()->routeIs('admin.departments') ? 'active' : '' }}">
+                                <a href="{{ route('admin.departments') }}"
+                                    class="flex items-center w-full p-2 text-gray-600 transition duration-75
+                            rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
+                            dark:text-white dark:hover:bg-gray-700">
+                                    <i class="fa-solid fa-building-user fa-lg"></i>
+                                    <span class="ms-3">Departments</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin.hiring_managers') ? 'active' : '' }}">
+                                <a href="{{ route('admin.hiring_managers') }}"
+                                    :active="request()->routeIs('users')"
+                                    class="flex items-center w-full p-2 text-gray-600 transition duration-75
+                            rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
+                            dark:text-white dark:hover:bg-gray-700">
+                                    <i class="fa-solid fa-users-gear fa-lg"></i>
+                                    <span class="ms-3">Hiring Managers</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin.employment_types') ? 'active' : '' }}">
+                                <a href="{{ route('admin.employment_types') }}"
+                                    :active="request()->routeIs('users')"
+                                    class="flex items-center w-full p-2 text-gray-600 transition duration-75
+                            rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
+                            dark:text-white dark:hover:bg-gray-700">
+                                    <i class="fa-solid fa-user-gear fa-lg"></i>
+                                    <span class="ms-3">Employment Types</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
-
-            <!--For Admin Management-->
-            @if (Auth::user()->role === 'admin') 
-                <li>
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base
-                        text-gray-600 transition duration-75 rounded-lg group
-                        hover:bg-tm-secondary hover:text-white group"
-                        aria-controls="dropdown-example" data-collapse-toggle="management">
-                        <i class="fa-solid fa-user-gear fa-lg"></i>
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Management</span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </button>
-                    <ul id="management" class="{{ request()->routeIs('admin.*') ? '' : 'hidden' }} py-2 space-y-2 ml-4">
-                        <li class="{{ request()->routeIs('admin.departments') ? 'active' : '' }}">
-                            <a href="{{ route('admin.departments') }}"
-                                class="flex items-center w-full p-2 text-gray-600 transition duration-75
-                                rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
-                                dark:text-white dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-building-user fa-lg"></i>
-                                <span class="ms-3">Departments</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->routeIs('admin.hiring_managers') ? 'active' : '' }}">
-                            <a href="{{ route('admin.hiring_managers') }}"
-                                :active="request()->routeIs('users')"
-                                class="flex items-center w-full p-2 text-gray-600 transition duration-75
-                                rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
-                                dark:text-white dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-users-gear fa-lg"></i>
-                                <span class="ms-3">Hiring Managers</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->routeIs('admin.employment_types') ? 'active' : '' }}">
-                            <a href="{{ route('admin.employment_types') }}"
-                                :active="request()->routeIs('users')"
-                                class="flex items-center w-full p-2 text-gray-600 transition duration-75
-                                rounded-lg pl-11 group hover:bg-tm-primary hover:text-white
-                                dark:text-white dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-user-gear fa-lg"></i>
-                                <span class="ms-3">Employment Types</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
             @endif
         </ul>
     </div>

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Job extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -23,8 +25,6 @@ class Job extends Model
         'application_deadline',
         'workplace_type',
         'job_pipeline_stages',
-        'privacy_settings',
-        'screening_questions',
-        'custom_fields'
+        'privacy_settings'
     ];
 }

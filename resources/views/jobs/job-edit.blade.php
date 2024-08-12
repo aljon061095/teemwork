@@ -1,58 +1,65 @@
 @extends('layouts.page')
 @inject('carbon', 'Carbon\Carbon')
 
-@section('title', 'Create Job')
+@section('title', 'Edit Job')
 
 @section('page')
 <div class="container mt-5">
     <header class="mb-2">
-        <h1 class="text-3xl">Create job posting</h1>
+        <h1 class="text-3xl">Edit job posting</h1>
         <hr class="h-px my-2 border-b border-solid border-tm-primary border-opacity-100" />
     </header>
     <div class="row mt-4">
-        <form>
+        <form method="POST" enctype="multipart/form-data" action="{{ route('store-job') }}">
             <div class="mb-6">
                 <div class="row mb-4">
-
                     <div class="col-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="name" class="block mb-2 text-sm font-medium required">
                             Title
                         </label>
                         <input type="text" id="title" name="title" class="bg-gray-50 border
                             border-gray-300 text-gray-900 text-sm rounded-lg
-                            block w-full p-2.5" placeholder="e.g. Accountant" required />
+                            block w-full p-2.5" placeholder="e.g. Accountant"
+                            value="{{$job->title}}"
+                            required />
                     </div>
 
                     <div class="col-6">
-                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="company" class="block mb-2 text-sm font-medium required">
                             Company
                         </label>
                         <input type="text" id="company" name="company" class="bg-gray-50 border
                             border-gray-300 text-gray-900 text-sm rounded-lg
-                            block w-full p-2.5" placeholder="Teemwork" required />
+                            block w-full p-2.5" placeholder="Teemwork"
+                            value="{{$job->company}}"
+                            required />
                     </div>
                 </div>
 
                 <div class="row mb-4">
                     <div class="col-12">
-                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="description" class="block mb-2 text-sm font-medium required">
                             Job Description
                         </label>
-                        <textarea id="job_description" name="description" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border" placeholder="Write your job description here..."></textarea>
+                        <textarea id="job_description" name="description" rows="6"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border"
+                            placeholder="Write your job description here..." required>
+                            {{$job->description}}
+                        </textarea>
                     </div>
                 </div>
 
                 <div class="row mb-4">
                     <div class="col-6">
-                        <label for="departments" class="block mb-2 text-sm font-medium text-gray-900">
-                            Departments
+                        <label for="location" class="block mb-2 text-sm font-medium required">
+                            Location
                         </label>
-                        <select id="department" name="department" class="livesearch form-control bg-gray-50 border border-gray-300">
+                        <select id="location" name="location" class="livesearch form-control bg-gray-50 border border-gray-300">
                         </select>
                     </div>
 
                     <div class="col-6">
-                        <label for="hiring_manager" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="hiring_manager" class="block mb-2 text-sm font-medium">
                             Hiring manager
                         </label>
                         <select id="hiring_manager" name="hiring_manager" class="livesearch form-control bg-gray-50 border border-gray-300">
@@ -62,14 +69,15 @@
 
                 <div class="row mb-4">
                     <div class="col-6">
-                        <label for="location" class="block mb-2 text-sm font-medium text-gray-900">
-                            Location
+                        <label for="departments" class="block mb-2 text-sm font-medium">
+                            Departments
                         </label>
-                        <select id="location" name="location" class="livesearch form-control bg-gray-50 border border-gray-300">
+                        <select id="department" name="department" class="livesearch form-control bg-gray-50 border border-gray-300">
                         </select>
                     </div>
+
                     <div class="col-6">
-                        <label for="employment_types" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="employment_types" class="block mb-2 text-sm font-medium">
                             Employment Type
                         </label>
                         <select id="employment-type" name="employment_type" class="livesearch form-control bg-gray-50 border border-gray-300">
@@ -79,50 +87,50 @@
 
                 <div class="row mb-4">
                     <div class="col-4">
-                        <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="number-input" class="block mb-2 text-sm font-medium">
                             Headcount
                         </label>
                         <input type="number" id="head-count" name="head_count" class="bg-gray-50 border
                             border-gray-300 text-gray-900 text-sm rounded-lg
-                            block w-full p-2.5" placeholder="1" required />
+                            block w-full p-2.5" placeholder="1" />
                     </div>
 
                     <div class="col-4">
-                        <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="number-input" class="block mb-2 text-sm font-medium">
                             Salary Range
                         </label>
                         <div class="">
                             <input type="number" id="number-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                            block w-full p-2.5" placeholder="Min" required />
+                            block w-full p-2.5" placeholder="Min" />
                         </div>
                     </div>
 
                     <div class="col-4 mt-1">
                         <div class="mt-4">
                             <input type="number" id="number-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Max" required />
+                            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Max" />
                         </div>
                     </div>
                 </div>
 
                 <div class="row mb-4">
                     <div class="col-4">
-                        <label for="workplace-type" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="workplace-type" class="block mb-2 text-sm font-medium">
                             Workplace Types
                         </label>
-                        <select id="workplace-type" name="workplace_type" 
+                        <select id="workplace-type" name="workplace_type"
                             class="livesearch form-control bg-gray-50 border border-gray-300">
                         </select>
                     </div>
                     <div class="col-4">
-                        <label for="job-pipeline-stages" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="job-pipeline-stages" class="block mb-2 text-sm font-medium">
                             Job Pipeline Stages
                         </label>
                         <select id="job-pipeline-stages" name="job_pipeline_stages" class="livesearch form-control bg-gray-50 border border-gray-300">
                         </select>
                     </div>
                     <div class="col-4">
-                        <label for="privacy-setting" class="block mb-2 text-sm font-medium text-gray-900">
+                        <label for="privacy-setting" class="block mb-2 text-sm font-medium">
                             Privacy Settings
                         </label>
                         <select id="privacy-setting" name="privacy_setting" class="livesearch form-control bg-gray-50 border border-gray-300">
@@ -133,15 +141,15 @@
                 <div class="row mb-4">
                     <div id="date-range-picker" date-rangepicker class="flex justify-between items-center">
                         <div class="col-5">
-                        <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Posting Date
-                        </label>
+                            <label for="number-input" class="block mb-2 text-sm font-medium">
+                                Posting Date
+                            </label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                     <i class="fas fa-calendar text-gray-600"></i>
                                 </div>
-                                <input id="datepicker-range-start" 
-                                    name="start" type="text" 
+                                <input id="datepicker-range-start"
+                                    name="posting_date" type="text"
                                     class="bg-gray-50 border
                                     border-gray-300 text-gray-900 
                                     text-sm rounded-lg block w-full ps-10 p-2.5"
@@ -151,14 +159,14 @@
                         </div>
                         <span class="mx-4 text-gray-500 mt-4">to</span>
                         <div class="col-5">
-                            <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <label for="number-input" class="block mb-2 text-sm font-medium">
                                 Application Deadline
                             </label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                     <i class="fas fa-calendar text-gray-600"></i>
                                 </div>
-                                <input id="datepicker-range-end" name="end" type="text"
+                                <input id="datepicker-range-end" name="application_deadline" type="text"
                                     class="bg-gray-50 border border-gray-300
                                     text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5"
                                     placeholder="Select date end"
@@ -169,7 +177,7 @@
                 </div>
 
                 <div class="row p-3 mb-4 card bg-inherit">
-                    <h3 class="block text-lg mb-2 me-4 text-gray-900 dark:text-white">
+                    <h3 class="block text-lg mb-2 me-4">
                         Screening Questions
                     </h3>
                     <div class="mt-2 flex">
@@ -195,7 +203,7 @@
                 </div>
 
                 <div class="row p-3 card bg-inherit">
-                    <h3 class="block text-lg mb-2 me-4 text-gray-900 dark:text-white">
+                    <h3 class="block text-lg mb-2 me-4">
                         Add Custom Field
                     </h3>
                     <div class="mt-2 flex">
@@ -225,22 +233,21 @@
             </div>
     </div>
 
-    <div class="mt-2 flex justify-end">
-        <a href="{{ route('jobs') }}" 
-            class="text-white bg-gray-700
-             hover:bg-gray-500 font-medium rounded-lg
-              text-base w-full sm:w-auto px-6 py-3.5 me-2 
-                    text-center">
+    <div class="mt-2 flex justify-end border-t">
+        <a href="{{ route('jobs') }}" class="text-gray-700 hover:text-white
+            border-gray-700 hover:bg-gray-700 focus:ring-4 focus:outline-none
+            focus:ring-gray-300 font-medium rounded-lg text-base px-6 py-2.5 text-center
+            me-2 mb-2 mt-4 border-2">
             Cancel
         </a>
-        <button type="submit" class="text-white
-             bg-tm-primary hover:bg-tm-secondary 
-             font-medium rounded-lg text-base w-full sm:w-auto px-6 py-3.5 
-                    text-center">
-            Save
+        <button type="submit" class="text-tm-primary hover:text-white
+            border-tm-primary hover:bg-tm-primary focus:ring-4 focus:outline-none
+            focus:ring-gray-300 font-medium rounded-lg text-base px-6 py-2.5 text-center
+            me-2 mb-2 mt-4 border-2">
+            <i class="fas fa-save"></i>
+            Update
         </button>
     </div>
-
     </form>
 </div>
 </div>
@@ -418,7 +425,7 @@
         tags: true,
         createTag: function(params) {
             return {
-                id: 0,
+                id: params.term,
                 text: params.term,
                 newOption: true
             }
@@ -433,7 +440,7 @@
                     results: $.map(data, function(item) {
                         return {
                             text: item.name,
-                            id: item.id
+                            id: item.name
                         }
                     })
                 };
@@ -449,7 +456,7 @@
         tags: true,
         createTag: function(params) {
             return {
-                id: 0,
+                id: params.term,
                 text: params.term,
                 newOption: true
             }
@@ -464,7 +471,7 @@
                     results: $.map(data, function(item) {
                         return {
                             text: item.name,
-                            id: item.id
+                            id: item.name
                         }
                     })
                 };
@@ -480,7 +487,7 @@
         tags: true,
         createTag: function(params) {
             return {
-                id: 0,
+                id: params.term,
                 text: params.term,
                 newOption: true
             }
@@ -495,7 +502,7 @@
                     results: $.map(data, function(item) {
                         return {
                             text: item.name,
-                            id: item.id
+                            id: item.name
                         }
                     })
                 };
@@ -511,7 +518,7 @@
         tags: true,
         createTag: function(params) {
             return {
-                id: 0,
+                id: params.term,
                 text: params.term,
                 newOption: true
             }
@@ -526,7 +533,7 @@
                     results: $.map(data, function(item) {
                         return {
                             text: item.name,
-                            id: item.id
+                            id: item.name
                         }
                     })
                 };
@@ -542,7 +549,7 @@
         tags: true,
         createTag: function(params) {
             return {
-                id: 0,
+                id: params.term,
                 text: params.term,
                 newOption: true
             }
@@ -557,7 +564,7 @@
                     results: $.map(data, function(item) {
                         return {
                             text: item.name,
-                            id: item.id
+                            id: item.name
                         }
                     })
                 };
@@ -573,7 +580,7 @@
         tags: true,
         createTag: function(params) {
             return {
-                id: 0,
+                id:  params.term,
                 text: params.term,
                 newOption: true
             }
@@ -588,7 +595,7 @@
                     results: $.map(data, function(item) {
                         return {
                             text: item.name,
-                            id: item.id
+                            id: item.name
                         }
                     })
                 };
@@ -604,7 +611,7 @@
         tags: true,
         createTag: function(params) {
             return {
-                id: 0,
+                id: params.term,
                 text: params.term,
                 newOption: true
             }
@@ -619,7 +626,7 @@
                     results: $.map(data, function(item) {
                         return {
                             text: item.name,
-                            id: item.id
+                            id: item.name
                         }
                     })
                 };

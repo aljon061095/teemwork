@@ -67,3 +67,8 @@ li.active {
         background-color: rgb(81 45 168 / var(--tw-bg-opacity));
     }
 }
+
+.required:after {
+    content:" *";
+    color: red;
+  }

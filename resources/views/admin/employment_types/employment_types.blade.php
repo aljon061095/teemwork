@@ -121,7 +121,6 @@
                         url: "/employment_type/" + id + "/delete",
                         type: 'DELETE',
                         success: function(result) {
-                            console.log(result);
                             Swal.fire('Successfully deleted!', '', 'success')
                         }
                     });

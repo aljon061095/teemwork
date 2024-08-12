@@ -22,11 +22,6 @@ class JobController extends Controller
             $data = Job::all();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $btn = '<a href="javascript:void(0)" class="btn btn-primary btn-sm">View</a>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
                 ->make(true);
         }
         return view('jobs.jobs');
@@ -34,12 +29,59 @@ class JobController extends Controller
 
     public function create() 
     {
-        return view('jobs.jobs-add');
+        return view('jobs.job-add');
     }
 
-    public function details(Request $request)
+    public function store(Request $request) 
     {
-        return view('jobs.job-details');
+        $request->validate([
+            'title' => 'required',
+            'company' => 'required',
+            'description' => 'required',
+            'location' => 'required'
+        ]);
+
+        $job = Job::create([
+            'title' => $request->title,
+            'company' => $request->company,
+            'description' => $request->description,
+            'department' => $request->department,
+            'hiring_manager' => $request->hiring_manager,
+            'location' => $request->location,
+            'employment_type' => $request->employment_type,
+            'head_count' => $request->head_count ?? 0,
+            'salary_range' => $request->salary_range ?? 0,
+            'workplace_type' => $request->workplace_type,
+            'job_pipeline_stages' => $request->job_pipeline_stages,
+            'privacy_settings' => $request->privacy_settings,
+        ]);
+
+        $job->save();
+
+        if ($job->id){
+            return response()->json('Job added successfully!');
+        } else {
+            return response()->json(['message' => 'Failed to create the job'], 422);
+        }
+    }
+
+    public function edit($id) 
+    {
+        $job = Job::find($id);
+        return view('jobs.job-edit', compact('job'));
+    }
+
+    public function details($id)
+    {
+        $job = Job::find($id);
+        if (!$job){
+            return redirect()->route('index')->withErrors([
+                'message' => 'Job not found',
+                'status' => 'error'
+            ]);
+        }
+
+        return view('jobs.job-details', compact('job'));
     }
 
     public function getDepartments(Request $request) 

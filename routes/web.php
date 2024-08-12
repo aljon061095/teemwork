@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\HiringManagerController;
 use App\Http\Controllers\Admin\EmploymentTypeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,15 @@ Route::get('/', function () {
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
 
+//Profile
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
 //Jobs
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
 Route::get('/jobs/create', [JobController::class, 'create'])->name('create-job');
+Route::post('/jobs/store', [JobController::class, 'store'])->name('store-job');
+Route::get('/jobs/{id}/edit', [JobController::class, 'edit'])->name('edit-job');
+
 Route::get('/get-departments', [JobController::class, 'getDepartments'])->name('get-departments');
 Route::get('/get-hiring-managers', [JobController::class, 'getHiringManagers'])->name('get-hiring-managers');
 Route::get('/get-locations', [JobController::class, 'getLocations'])->name('get-locations');

@@ -20,29 +20,52 @@
             <div class="flex items-center">
                 <div class="flex items-center ms-3">
                     <div>
-                        <button type="button"
-                            class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                        <div
+                            class="flex cursor-pointer"
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
-                        </button>
+                            <div class="relative inline-flex items-center
+                                 justify-center w-10 h-10 overflow-hidden bg-gray-100 
+                                 rounded-full dark:bg-gray-600">
+                                <span class="font-medium text-gray-600 dark:text-gray-300">
+                                    {{ Helper::initials(Auth::user()->name) }}
+                                </span>
+                            </div>
+                            <!-- <div class="text-sm bg-gray-800 rounded-full">
+                                <img class="w-8 h-8 rounded-full"
+                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" 
+                                alt="user photo">
+                            </div> -->
+                           <!-- <div class="m-1">{{ Auth::user()->name }}<i class="fa-solid fa-angle-down ms-1"></i></div> -->
+                        </div>
                     </div>
-                    <div class="z-50 my-2 hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                    <div class="z-50 hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <div class="flex justify-between">
-                                <div>
-                                    <img class="w-8 h-8 rounded-full"
-                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                                <div class="relative inline-flex items-center
+                                    justify-center w-10 h-10 overflow-hidden bg-gray-100 
+                                    rounded-full dark:bg-gray-600">
+                                    <span class="font-medium text-gray-600 dark:text-gray-300">
+                                        {{ Helper::initials(Auth::user()->name) }}
+                                    </span>
                                 </div>
                                 <div class="mx-3">
                                     <span class="block text-sm font-semibold text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
-                                    <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{ Auth::user()->email }}</span>
+                                    <small class="text-muted">{{ Auth::user()->role }}</small>
                                 </div>
                             </div>
                         </div>
                         <ul class="py-1" role="none">
+                            <li>
+                                <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm
+                                    text-gray-700 hover:bg-gray-100" role="menuitem">
+                                    {{ __('Profile') }}
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
                             <li>
                                 <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm
                                              text-gray-700 hover:bg-gray-100
